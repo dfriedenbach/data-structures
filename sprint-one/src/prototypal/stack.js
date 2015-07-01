@@ -19,7 +19,7 @@ stackMethods.push = function(value) {
 stackMethods.pop = function() {
   if (this.length > 0) {
     this.length--;
-    return this.storage[this.length]
+    return this.storage[this.length];
   }
 };
 
