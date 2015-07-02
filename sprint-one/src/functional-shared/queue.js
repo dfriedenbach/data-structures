@@ -26,7 +26,7 @@ queueMethods.enqueue = function(value) {
 queueMethods.dequeue = function() {
   if (this.length > 0) {
     var result = this.storage[this.front];
-    //delete this.storage[this.front];
+    delete this.storage[this.front];
     this.front++;
     this.length--;
     return result;
