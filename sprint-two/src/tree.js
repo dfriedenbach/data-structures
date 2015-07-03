@@ -1,6 +1,7 @@
-var Tree = function(value){
+var Tree = function(value, parent){
   var newTree = {};
   newTree.value = value;
+  newTree.parent = parent || null;
 
   // your code here
   newTree.children = [];  // fix me
@@ -18,8 +19,14 @@ var extend = function(to, from) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  this.children.push(Tree(value));
+  this.children.push(Tree(value, this));
 };
+
+treeMethods.removeFromParent = function() {
+  var index = this.parent.children.indexOf(this);
+  this.parent.children.splice(index, 1);
+  this.parent = null;
+}
 
 treeMethods.contains = function(target){
   var searchTree = function(tree) {
@@ -39,6 +46,13 @@ treeMethods.contains = function(target){
   }
   return searchTree(this);
 };
+
+treeMethods.traverse = function(callback) {
+  callback(this.value);
+  this.children.forEach(function(tree) {
+    tree.traverse(callback);
+  });
+}
 
 
 /*

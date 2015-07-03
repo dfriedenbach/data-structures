@@ -41,4 +41,35 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should correctly assign parent properties', function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    expect(tree.children[0].parent).to.equal(tree);
+    expect(tree.parent).to.equal(null);
+  });
+
+  it('should remove from parent', function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    var tempChild = tree.children[0];
+    tree.children[0].addChild(7);
+    tree.children[0].removeFromParent();
+    expect(tree.children[0].value).to.equal(6);
+    expect(tree.contains(5)).to.equal(false);
+    expect(tree.contains(7)).to.equal(false);
+    expect(tempChild.parent).to.equal(null);
+  });
+
+  it('should execute a callback on every node in the tree', function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[0].addChild(8);
+    var valueList = [];
+    tree.traverse(function(value) {
+      valueList.push(value);
+    });
+    expect(valueList.toString()).to.equal([undefined, 5, 7, 8, 6].toString());
+  });
+
 });
