@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script src="profiling.js"></script>
+  </head>
+  <body>
+    <script>
+      var myQueues = [];
+      var myStacks = [];
+      for (var i = 0; i < styles.length; i++) {
+        for (var j = 0; j < 1000000; j++) {
+          myQueues.push(styles[i].Queue());
+          myStacks.push(styles[i].Stack());
+        }
+      }
+    </script>
+  </body>
+</html>

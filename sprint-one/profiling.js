@@ -63,7 +63,7 @@ funcShared.Queue = function(){
   newQueue.length = 0;
   newQueue.front = 0;
 
-  extend(newQueue, queueMethods);
+  extend(newQueue, funcShared.queueMethods);
   return newQueue;
 };
 funcShared.queueMethods = {};
@@ -88,7 +88,7 @@ funcShared.Stack = function() {
   var newStack = {};
   newStack.storage = {};
   newStack.length = 0;
-  extend(newStack, stackMethods);
+  extend(newStack, funcShared.stackMethods);
   return newStack;
 };
 funcShared.stackMethods = {};
@@ -108,7 +108,7 @@ funcShared.stackMethods.size = function() {
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 prototypal.Queue = function() {
-  var newQueue = Object.create(queueMethods);
+  var newQueue = Object.create(prototypal.queueMethods);
   newQueue.length = 0;
   newQueue.front = 0;
   newQueue.storage = {};
@@ -134,7 +134,7 @@ prototypal.queueMethods.size = function() {
 };
 ////////////////////////////////////////////////////////////////////////////////
 prototypal.Stack = function() {
-  var newStack = Object.create(stackMethods);
+  var newStack = Object.create(prototypal.stackMethods);
   newStack.storage = {};
   newStack.length = 0;
   return newStack;

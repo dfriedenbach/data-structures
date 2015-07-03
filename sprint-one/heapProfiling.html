@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="profiling.js"></script>
+  </head>
+  <body>
+    <script>
+      var myQueue;
+      var myStack;
+      for (var i = 0; i < 1000000; i++) {
+        myQueue = functional.Queue();
+        myStack = functional.Stack();
+        myQueue = funcShared.Queue();
+        myStack = funcShared.Stack();
+        myQueue = prototypal.Queue();
+        myStack = prototypal.Stack();
+        myQueue = pseudoclassical.Queue();
+        myQueue = pseudoclassical.Stack();
+      }
+    </script>
+  </body>
+</html>

@@ -51,5 +51,19 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should add to head', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToHead(6);
+    expect(linkedList.head.value).to.equal(6);
+  });
+
+  it('should remove the tail', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToHead(6);
+    linkedList.removeTail();
+    expect(linkedList.tail.value).to.equal(4);
+  });
   // add more tests here to test the functionality of linkedList
 });
