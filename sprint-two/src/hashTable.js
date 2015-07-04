@@ -11,8 +11,18 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.get(i).push([k, v]);
-  this._population += 1;
+  var collisionList = this._storage.get(i);
+  var found = false;
+  for (var i = 0; i < collisionList.length; i++) {
+    if (collisionList[i][0] === k) {
+      found = true;
+      collisionList[i][1] = v;
+    }
+  }
+  if(!found) {
+    this._population += 1;
+    collisionList.push([k, v]);
+  }
 
   if (this._population / this._limit > this._upperThreshold) {
     this._repopulate(this._limit * 2);
